@@ -9,6 +9,7 @@ import {
 import { produce } from 'immer';
 import { registry } from '../metaUI';
 import { eventBus } from '../eventBus';
+import _ from 'lodash';
 
 function genSlotTrait(parentId: string, slot: string): ComponentTrait {
   return {
@@ -105,7 +106,7 @@ export class AppModelManager {
         newApp = produce(this.app, draft => {
           return draft.spec.components.forEach(c => {
             if (c.id === mo.componentId) {
-              c.properties[mo.propertyKey] = mo.propertyValue;
+              _.set(c.properties, mo.propertyKey, mo.propertyValue);
             }
           });
         });

@@ -39,7 +39,6 @@ export const Editor = () => {
 
   const gridCallbacks: GridCallbacks = {
     onDragStop(id, layout) {
-      console.log('dragstop');
       eventBus.send(
         'operation',
         new ModifyComponentPropertyOperation(id, 'layout', layout)
